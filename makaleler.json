@@ -1,0 +1,14 @@
+[
+  {
+    "baslik": "Rust ile Sistem Programlama Temelleri",
+    "icerik": "Bu makalede Rust ile bellek güvenliği, ownership yapısı ve concurrency konularını ele alıyoruz..."
+  },
+  {
+    "baslik": "PyQt ile Masaüstü Uygulama Geliştirme",
+    "icerik": "GUI tasarımı, sinyal-slot sistemi ve uygulama dağıtımı üzerine temel bilgiler bu yazıda..."
+  },
+  {
+    "baslik": "Android Uygulama Test Süreçleri",
+    "icerik": "CI/CD, emulator testleri ve crash analizi üzerine uygulamalı bir rehber..."
+  }
+]
