@@ -14,6 +14,7 @@
       <ul class="nav-links">
         <li><a href="#hakkimda">Hakkımda</a></li>
         <li><a href="#projeler">Projeler</a></li>
+        <li><a href="#makaleler">Makaleler</a></li>
         <li><a href="#iletisim">İletişim</a></li>
       </ul>
     </nav>
@@ -26,10 +27,7 @@
 
   <section id="hakkimda" class="about">
     <h2>Hakkımda</h2>
-    <p>Merhaba ben Talha, Masaüstü ve mobil platformlar için uygulamalar geliştiren bir yazılımcıyım.
-Özellikle Rust programlama dili ve Python (PyQt / Qt) teknolojileriyle ilgileniyorum. Rust ile yüksek performanslı masaüstü uygulamaları geliştirme,Python ve Qt kullanarak GUI (grafiksel arayüz) uygulamaları oluşturma
-Android uygulamaları geliştirme ve test etme Sistem programlama ve verimlilik odaklı yazılım mimarisi çalışma alanlarımdır. Yeni teknolojileri takip eder, açık kaynak projelere katkı sağlamaktan keyif alırım.
-Projelerimi inceleyebilir veya birlikte geliştirmek istediğiniz bir fikri paylaşabilirsiniz.</p>
+    <p>Merhaba ben Talha, Masaüstü ve mobil platformlar için uygulamalar geliştiren bir yazılımcıyım...</p>
   </section>
 
   <section id="projeler" class="projects">
@@ -45,10 +43,61 @@ Projelerimi inceleyebilir veya birlikte geliştirmek istediğiniz bir fikri payl
       </div>
     </div>
   </section>
+
+  <!-- Makaleler Bölümü -->
+  <section id="makaleler" class="articles">
+    <h2>Makaleler</h2>
+
+    <!-- Dinamik olarak JSON'dan yüklenecek -->
+    <div id="article-container">
+      <noscript>
+        <!-- JavaScript kapalıysa gösterilecek yedek içerik -->
+        <div class="article">
+          <div class="article-title">Rust ile Sistem Programlama Temelleri</div>
+          <div class="article-content">
+            <p>Bu makalede Rust ile bellek güvenliği, ownership yapısı ve concurrency konularını ele alıyoruz...</p>
+          </div>
+        </div>
+        <div class="article">
+          <div class="article-title">PyQt ile Masaüstü Uygulama Geliştirme</div>
+          <div class="article-content">
+            <p>GUI tasarımı, sinyal-slot sistemi ve uygulama dağıtımı üzerine temel bilgiler bu yazıda...</p>
+          </div>
+        </div>
+      </noscript>
+    </div>
   </section>
 
   <footer>
     <p>© 2025 MoonAuraDev Tüm hakları saklıdır.</p>
   </footer>
+
+  <!-- JavaScript: Makale başlığına tıklayınca içeriği aç -->
+  <script>
+    // Makale başlıklarına tıklama işlevi
+    document.addEventListener("click", function (e) {
+      if (e.target.classList.contains("article-title")) {
+        e.target.parentElement.classList.toggle("active");
+      }
+    });
+
+    // JSON'dan makale çekme
+    fetch('makaleler.json')
+      .then(response => response.json())
+      .then(data => {
+        const container = document.getElementById('article-container');
+        container.innerHTML = ''; // Boşalt
+        data.forEach(makale => {
+          const article = document.createElement('div');
+          article.classList.add('article');
+          article.innerHTML = `
+            <div class="article-title">${makale.baslik}</div>
+            <div class="article-content"><p>${makale.icerik}</p></div>
+          `;
+          container.appendChild(article);
+        });
+      })
+      .catch(err => console.error('Makaleler yüklenemedi:', err));
+  </script>
 </body>
 </html>
